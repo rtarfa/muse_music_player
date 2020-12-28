@@ -1,7 +1,13 @@
 <h2> Muse Music Player </h2>
 
-Object-oriented music player written in python
+Muse allows you to play music and organize songs into playlists. 
 
-To use Muse, download songs to the same folder install requirements, and type into the command line:
+<h2> Directions </h2>
 
-      python script.py
+1. Download songs to the same folder.
+2. Install requirements.
+
+            pip install -r requirements.txt
+3. Run the script.py file.
+
+            python script.py
