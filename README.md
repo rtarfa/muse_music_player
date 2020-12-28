@@ -1,4 +1,4 @@
-Muse Music Player
+<h2> Muse Music Player </h2>
 
 Object-oriented music player written in python
 
