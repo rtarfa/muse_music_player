@@ -2,22 +2,26 @@
 from song import song
 from playlist import playlist
 import library
-import pickle
+#import pickle
 from audioplayer import AudioPlayer as ap
 import ytdownloader
 
-#MAIN TODO: remove text when downloading (replace w "laoding"), upload to github, fix playlist quit, get file to delete after quit(unless adding to a playlist),finish player visual
+#MAIN TODO: remove text when downloading (replace w "laoding"), fix playlist quit, get file to delete after quit(unless adding to a playlist),finish player visual
 #new idea: GUI live cam viewer/app for diff animals/ (pandas, penguins)
 
 #u can import itunes library??
 #add error exceptions
 #while input is not e (quit); loop
 
-#note: don't want it to download a song everytime you play one (so check first if in playlists)
 #also want it to save music into songs folder and source from there too
 #can write to a file when add songs,playlists,etc
 #add cover art!!
 #transform to a webpage or google app etc
+#try to get same button to pause/unpause!!
+#fix: expects a command before playing next song
+
+#note: use a linked list to fix the skip/quit issue (if skip play next, etc)
+#faster than iterating thru a list
 
 def menu():
     print("Welcome to Muse! What would you like to do?\n") #maybe put this outside the loop??
@@ -115,7 +119,7 @@ while loop == 1:
         if downl==True: #if not in library, download from youtube
             ytdownloader.download(song, artist)
 
-        curr_song = ap(song.lower()+".mp3")
+        curr_song = ap('song library/'+song.lower()+".mp3")
         command=None
         #include artist in filename (like "better_khalid.mp3" program it to save like this when download from youtube)
         while command!='q':
@@ -141,14 +145,14 @@ while loop == 1:
             for pl in library.playlists:
                 if playlist == pl.title:
                     for song in pl.your_playlist:
-                        curr_song = ap(song.title.lower() + ".mp3")
+                        curr_song = ap('song library/'+song.title.lower() + ".mp3")
                         print("Current song: "+ song.title + " by "+song.artist)
+                        curr_song.play()
                         command=None
-                        while command != 's':
-                            command = input("Press a to play, p to pause, r to resume, s to skip, and q to quit.\n")
-                            if command == 'a':
-                                curr_song.play()
-                            elif command == 'p':
+                        while command != 's': 
+                            #expects a command before playing next song
+                            command = input("Press p to pause, r to resume, s to skip, and q to quit.\n")
+                            if command == 'p':
                                 curr_song.pause()
                             elif command == 'r':
                                 curr_song.resume()

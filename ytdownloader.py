@@ -5,11 +5,11 @@ from youtubesearchpython import SearchVideos
 def download(title,artist):
     search = SearchVideos(title+" "+artist, offset = 1, mode = "list", max_results = 1)
     url= (search.result())[0][2]
-    print(url)
+    #print(url)
 
     ydl_opts = {
         'format': 'bestaudio/best',
-        'outtmpl': title+'.%(ext)s',
+        'outtmpl': 'song library/'+title+'.%(ext)s',
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
