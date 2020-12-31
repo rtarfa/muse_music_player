@@ -9,4 +9,4 @@ Muse allows you to play music straight from the internet and organize songs into
             pip install -r requirements.txt
 3. Run script.py.
 
-            python script.py
+            python3 script.py
