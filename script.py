@@ -6,17 +6,21 @@ import pickle
 from audioplayer import AudioPlayer as ap
 import ytdownloader
 
-#MAIN TODO: remove text when downloading, don't download if already in library, upload to github, fix playlist quit, download song when add to playlist
-#get file to delete after quit
+#MAIN TODO: remove text when downloading (replace w "laoding"), upload to github, fix playlist quit, get file to delete after quit(unless adding to a playlist),finish player visual
+#new idea: GUI live cam viewer/app for diff animals/ (pandas, penguins)
 
 #u can import itunes library??
 #add error exceptions
 #while input is not e (quit); loop
 
 #note: don't want it to download a song everytime you play one (so check first if in playlists)
+#also want it to save music into songs folder and source from there too
+#can write to a file when add songs,playlists,etc
+#add cover art!!
+#transform to a webpage or google app etc
 
 def menu():
-    print("Welcome to Muse! What would you like to do?\n")
+    print("Welcome to Muse! What would you like to do?\n") #maybe put this outside the loop??
     print("a. Create a new empty playlist\n"
           "b. Add a song to an existing playlist\n"
           "c. View song library\n"
@@ -48,12 +52,20 @@ while loop == 1:
             st= input("Song title: ")
             ar= input("Artist: ")
 
+            downl = True
+
             for pl in library.playlists:
                 if playlist==pl.title:
                     playlist=pl
+                for s in pl.your_playlist:
+                    if s.title.lower() == st.lower() and s.artist.lower() == ar.lower():
+                        downl = False
 
             pl.add(st,ar)
-            ytdownloader.download(st,ar) #get rid of printed text when downloads
+
+            if downl == True:  # if not in library, download from youtube
+                ytdownloader.download(st, ar)
+                #get rid of printed text when downloads
             # f= open("library.py","a") #fix this part
             # f.write(playlist.lower()+".add("+st+","+ar+")") #not working
             # f.close()
@@ -67,7 +79,6 @@ while loop == 1:
                            "b. Return to main menu\n")
 
     elif arg=='c':
-
         option='a'
         while option!='b':
             print("Playlists:")
@@ -94,8 +105,16 @@ while loop == 1:
         # print("a. View all songs")
         song= input("Song title: ")
         artist= input("Artist: ")
-        ytdownloader.download(song, artist)
-        #if not in library, download from youtube here
+        downl=True
+        for pl in library.playlists:
+            for s in pl.your_playlist:
+                if s.title.lower()==song.lower() and s.artist.lower()==artist.lower():
+                    downl=False
+        # if song(song,artist) in all_songs.all_songs:
+        #         downl=False
+        if downl==True: #if not in library, download from youtube
+            ytdownloader.download(song, artist)
+
         curr_song = ap(song.lower()+".mp3")
         command=None
         #include artist in filename (like "better_khalid.mp3" program it to save like this when download from youtube)
@@ -155,7 +174,4 @@ while loop == 1:
 #         return func()
 # if/else/those c++ statements we used
 
-#can write to a file when add songs,playlists,etc
-
 #do_something(argument)
-#need way to loop back to controls
