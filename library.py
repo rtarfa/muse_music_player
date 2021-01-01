@@ -1,15 +1,14 @@
 from song import song
 from playlist import playlist
 
+Chill=playlist("Chill")
+Chill.add("No Has Podido Olvidarme","Cami Moreno")
+Chill.add("Dile","Cami Moreno")
+Chill.add("Magnolia","Keshi")
+Chill.add("The Sound","The 1975")
+Chill.add("Better","Khalid")
+
+playlists=[Chill]
 
 
-#example of how to add songs to playlists manually
-
-chill=playlist("Chill")
-chill.add("Better","Khalid")
-chill.add("No Has Podido Olvidarme","Cami Moreno ")
-
-playlists=[chill] #script.py references this list and adds to it
-
-#pl.delete("aicha","cheb khaled")
-#pl.print()
+Chill.add("The Reaper","Keshi")
