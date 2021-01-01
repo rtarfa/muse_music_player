@@ -6,22 +6,6 @@ import library
 from audioplayer import AudioPlayer as ap
 import ytdownloader
 
-#MAIN TODO: remove text when downloading (replace w "laoding"), fix playlist quit, get file to delete after quit(unless adding to a playlist),finish player visual
-#new idea: GUI live cam viewer/app for diff animals/ (pandas, penguins)
-
-#add functionality to delete playlist
-#u can import itunes library?? maybe make that an option
-#add error exceptions
-#while input is not e (quit); loop
-
-#can write to a file when add songs,playlists,etc
-#add cover art!!
-#transform to a webpage or google app etc
-#try to get same button to pause/unpause!!
-#fix: expects a command before playing next song
-
-#note: use a linked list to fix the skip/quit issue (if skip play next, etc)
-#faster than iterating thru a list
 
 def menu():
     print("Welcome to Muse! What would you like to do?\n") #maybe put this outside the loop??
@@ -167,15 +151,3 @@ while loop == 1:
     elif arg=='f':
         loop=0
 
-
-# def do_something(arg):
-#     switcher= {
-#         'a': playlist(input("Playlist title:")),
-#         'c': print(library.playlists)
-#     }
-#     def do_something(arg):
-#         func= switcher.get(arg,"nothing") #what does nothing mean??
-#         return func()
-# if/else/those c++ statements we used
-
-#do_something(argument)
